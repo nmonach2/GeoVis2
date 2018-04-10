@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    
+    <title>HistoLavaux</title>
+    
+    <link rel="stylesheet" href="index.css" />
+    
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+    <script src="Lavaux.js"></script>
+    <script src="BAT2010.js"></script>
+    <script src="BAT1998.js"></script>
+    <script src="BAT1980.js"></script>
+    <script src="BAT1964.js"></script>
+    <script src="BAT1945.js"></script>
+    <script src="BAT1920.js"></script>
+    <script src="BAT1890.js"></script>
+    <script src="VIG2010.js"></script>
+    <script src="VIG1998.js"></script>
+    <script src="VIG1980.js"></script>
+    <script src="VIG1964.js"></script>
+    <script src="VIG1945.js"></script>
+    <script src="VIG1920.js"></script>
+    <script src="VIG1890.js"></script>
+
+
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    
+</head>
+
+<body>
+
+    <div class="bloc0">
+    
+        <div id="logo_info" class="logo_info">
+            <p><img src="info.png" width="16" height="16" /></p>
+        </div>
+        
+        <div class="info0">
+        <p align="justify"> L'application <i>HistoLavaux</i> a été développée dans la suite de mon travail de bachelor et en présente certains résultats. Cette application, ainsi que les géodonnées et vidéos qui y sont utilisées sont des résultats de travaux personnels. Les couches ont été obtenues par vectorisation manuelle à partir d'images raster des CN des années concernées.
+        <p align="left">  2018 © <i>HistoLavaux</i>, Nicolas Monachon
+         </div>
+    
+        <div class="box0"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Informations</b></div>
+    
+    </div>
+    
+
+    <div class="bloc1">
+        
+        <div class="titles">
+            <h1><span style="color: #990000;">H</span>isto<span style="color: #990000;">L</span>avaux</h1>
+            <h2>Outil de visualisation de l'historique des changements d'occupation du sol en Lavaux</h2>
+        </div>
+    
+        <div class="shape">
+        <p><img src="shape.png" width="410" height="100" /></p>
+        </div>
+    
+        <div class="box1"></div>
+        
+        <div class="image">
+            <p><img src="banniere.png" width="760" height="140" /></p>
+        </div>
+        
+    </div>
+    
+    
+    
+    <div class="bloc2">
+    
+        <div id="logo_display" class="logo_display">
+        <p><img src="display.png" width="16" height="16" /></p>
+        </div>
+    
+        <div class="box2"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choix de l'affichage</b></div>
+    
+         <div class="radio">
+             <label for="radiovideo">
+                <p><input type="radio" name="radiovideo" value="carte" id="carte" checked /><b>Carte</b>: Affichage des couches</p>
+                <p><input type="radio" name="radiovideo" value="VIG" id="VIG" /><b>Vidéo 1</b>: Evolution vignes</p>
+                <p><input type="radio" name="radiovideo" value="BAT" id="BAT"/><b>Vidéo 2</b>: Evolution bâti</p>
+             </label>
+         </div>
+         
+    </div>
+    
+    
+ 
+    <div class="bloc3">
+    
+        <div id="map" style="width: 1000px; height: 435px;"></div>
+        <div id="coordinates" class="coordinates">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Coordonnées:</b> Déplacez la souris sur la carte</div>
+        
+        <div id="logo_coord" class="logo_coord">
+        <p><img src="coord.png" width="16" height="16" /></p>
+        </div
+        
+
+
+    
+    </div>
+    
+    
+    
+    <div class="bloc4">
+
+        <div id="logo_data" class="logo_data">
+            <p><img src="layers.png" width="18" height="18" /></p>
+        </div>
+        
+        <div class="box4"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choix des couches</b></div>
+    
+        <div class="years">
+            <p><img src="years.png" width="30" height="230" /></p>
+        </div>
+    
+        <div class="logo_vigne">
+            <p><img src="logo_vigne.png" width="50" height="67" /></p>
+        </div>
+    
+        <div class="logo_bati">
+            <p><img src="logo_bati.png" width="50" height="67" /></p>
+        </div>
+    
+        <div id='filter_selection' class='checkboxes'>
+            <p><input type="checkbox" id="checkboxBAT2010"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG2010"/> </p>
+            <p><input type="checkbox" id="checkboxBAT1998"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG1998"/> </p>
+            <p><input type="checkbox" id="checkboxBAT1980"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG1980"/> </p>
+            <p><input type="checkbox" id="checkboxBAT1964"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG1964"/> </p>
+            <p><input type="checkbox" id="checkboxBAT1945"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG1945"/> </p>
+            <p><input type="checkbox" id="checkboxBAT1920"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG1920"/> </p>
+            <p><input type="checkbox" id="checkboxBAT1890"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="checkbox" id="checkboxVIG1890"/> </p>
+        </div>
+   
+        <div class='info'>
+            <hr />
+            <p align="justify">Plus de données relatives à la région de Lavaux sont disponibles sur <a href="http://lavaux.unil.ch:8080/" target="_blank">GeoLavaux</a>, base de données thématiques hébergée par l'UNIL.</p>
+        </div>
+    
+    </div>
+    
+    <div class="video1" id="video1">
+    <iframe width="1000" height="435" src="https://www.youtube.com/embed/Ad534T13mDA?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    
+    <div class="video2" id="video2">
+    <iframe width="1000" height="435" src="https://www.youtube.com/embed/O9i210sqs5c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    
+    <style>
+
+</style>
+
+
+    
+    <script src="index.js"></script>
+    
+</body>
+    
+</html>
